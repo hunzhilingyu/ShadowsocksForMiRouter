@@ -1,12 +1,14 @@
 #!/bin/sh
 
+firewallBackupFile="/etc/firewall.user.back"
+
 clear
 echo "#############################################################"
 echo "# Install Shadowsocks for Miwifi(r1d)"
 echo "#############################################################"
 
 # Check wheather Shadowsocks has been installed
-if [[ -d /etc/firewall.user.back ]]; then
+if [[ -d "$firewallBackupFile" ]]; then
 	echo "Error: You have installed Shadowsocks. Please remove it after update the MiRouter!" 1>&2
 	exit 1
 fi
