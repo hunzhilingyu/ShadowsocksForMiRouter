@@ -5,7 +5,7 @@ echo "#############################################################"
 echo "# Install Shadowsocks for Miwifi(r1d)"
 echo "#############################################################"
 
-# Check wheather Shadowsocks has been installed
+# Make sure Shadowsocks has not been installed
 if [[ -f /etc/firewall.user.back ]]; then
 	echo "Error: You have installed Shadowsocks. Please remove it after update the MiRouter!" 1>&2
 	exit 1
@@ -40,7 +40,7 @@ echo "# Please input your shadowsocks configuration"
 echo "#"
 echo "#############################################################"
 echo ""
-echo "input server_address(ipaddress is suggested):"
+echo "input server_address(IP address is suggested):"
 read serverip
 echo "input server_port:"
 read serverport
