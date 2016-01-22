@@ -7,12 +7,12 @@ echo "#############################################################"
 
 # Make sure Shadowsocks has not been installed
 if [[ -f /etc/firewall.user.back ]]; then
-	echo "Error: You have installed Shadowsocks. Please remove it after update the MiRouter!" 1>&2
-	exit 1
+  echo "Error: You have installed Shadowsocks. Please remove it after update the MiRouter!" 1>&2
+  exit 1
 fi
 
 # Make sure only root can run our script
-if [[ $EUID -ne 0 ]]; then
+if [[ `id -u` -ne 0 ]]; then
    echo "Error: This script must be run as root!" 1>&2
    exit 1
 fi
@@ -67,8 +67,8 @@ EOF
 mkdir -p /etc/dnsmasq.d
 #cp -f ./shadowsocks-miwifi/fgserver.conf /etc/dnsmasq.d/fgserver.conf
 #cp -f ./shadowsocks-miwifi/fgset.conf /etc/dnsmasq.d/fgset.conf
-wget --no-check-certificate https://raw.githubusercontent.com/bazingaterry/ShadowsocksForMiRouter/master/fgserver.conf -o /etc/dnsmasq.d/fgserver.conf
-wget --no-check-certificate https://raw.githubusercontent.com/bazingaterry/ShadowsocksForMiRouter/master/fgset.conf -o /etc/dnsmasq.d/fgset.conf
+curl https://raw.githubusercontent.com/bazingaterry/ShadowsocksForMiRouter/master/fgserver.conf --insecure > /etc/dnsmasq.d/fgserver.conf
+curl https://raw.githubusercontent.com/bazingaterry/ShadowsocksForMiRouter/master/fgset.conf --insecure > /etc/dnsmasq.d/fgset.conf
 
 #config firewall
 cp -f /etc/firewall.user /etc/firewall.user.back
