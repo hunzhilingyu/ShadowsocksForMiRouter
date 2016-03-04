@@ -32,27 +32,29 @@ mount / -o ro,remount
 cp ./shadowsocks-miwifi/shadowsocks /etc/init.d/shadowsocks
 chmod +x /etc/init.d/shadowsocks
 
-#config setting and save settings.
-mkdir -p /etc/shadowsocks
-echo "#############################################################"
-echo "#"
-echo "# Please input your shadowsocks configuration"
-echo "#"
-echo "#############################################################"
-echo ""
-echo "input server_address(IP address is suggested):"
-read serverip
-echo "input server_port:"
-read serverport
-echo "input local_port(1082 is suggested):"
-read localport
-echo "input password:"
-read shadowsockspwd
-echo "input method"
-read method
-
-# Config shadowsocks
-cat > /etc/shadowsocks/config.json<<-EOF
+read -p "Do you want to create configuration file? (Y/n)" createConfig
+if [[ "$createConfig" = "Y" ]]; then
+    # Read configuration
+    mkdir -p /etc/shadowsocks
+    echo "#############################################################"
+    echo "#"
+    echo "# Please input your shadowsocks configuration"
+    echo "#"
+    echo "#############################################################"
+    echo ""
+    echo "input server_address(IP address is suggested):"
+    read serverip
+    echo "input server_port:"
+    read serverport
+    echo "input local_port(1082 is suggested):"
+    read localport
+    echo "input password:"
+    read shadowsockspwd
+    echo "input method"
+    read method
+    
+    # Creat shadowsocks
+    cat > /etc/shadowsocks/config.json<<-EOF
 {
     "server":"${serverip}",
     "server_port":${serverport},
@@ -63,10 +65,10 @@ cat > /etc/shadowsocks/config.json<<-EOF
 }
 EOF
 
-#config dnsmasq
+fi
+
+# Config dnsmasq
 mkdir -p /etc/dnsmasq.d
-#cp -f ./shadowsocks-miwifi/fgserver.conf /etc/dnsmasq.d/fgserver.conf
-#cp -f ./shadowsocks-miwifi/fgset.conf /etc/dnsmasq.d/fgset.conf
 curl https://raw.githubusercontent.com/bazingaterry/ShadowsocksForMiRouter/master/fgserver.conf --insecure > /etc/dnsmasq.d/fgserver.conf
 curl https://raw.githubusercontent.com/bazingaterry/ShadowsocksForMiRouter/master/fgset.conf --insecure > /etc/dnsmasq.d/fgset.conf
 
