@@ -26,8 +26,8 @@ mount / -o ro,remount
 cd /userdisk/data/
 rm -rf shadowsocks-miwifi
 
-# delete config file
-rm -rf /etc/shadowsocks
+# if you want to delete config file, you can comment out the following code.
+# rm -rf /etc/shadowsocks
 mv -f /etc/firewall.user.back /etc/firewall.user
 rm -f /etc/dnsmasq.d/fgserver.conf
 rm -f /etc/dnsmasq.d/fgset.conf
