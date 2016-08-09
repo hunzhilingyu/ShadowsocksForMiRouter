@@ -1,3 +1,3 @@
 # ShadowsocksForMiRouter
 
-More information please click [here](https://t.32ph.com/digital-life/shadowsocks-for-mirouter/)
+More information please click [here](https://dev.terry.pub/digital-life/shadowsocks-for-mirouter/)
