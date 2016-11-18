@@ -30,7 +30,6 @@ rm -rf shadowsocks-miwifi
 # rm -rf /etc/shadowsocks
 mv -f /etc/firewall.user.back /etc/firewall.user
 rm -f /etc/dnsmasq.d/fgserver.conf
-rm -f /etc/dnsmasq.d/fgset.conf
 
 
 #restart all service
@@ -41,4 +40,4 @@ rm -f /etc/dnsmasq.d/fgset.conf
 rm -f /etc/init.d/shadowsocks
 echo "Shadowsocks uninstall success!"
 echo ""
-exit 0 
+exit 0
